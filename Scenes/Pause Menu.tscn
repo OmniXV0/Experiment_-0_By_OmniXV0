@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://bej1jcpabmfml"]
+
+[ext_resource type="Texture2D" uid="uid://hhg2c371syix" path="res://Textures/Quit Text.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://p7g5hnqwpp0d" path="res://Textures/Continue Text.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dcn0hdyug0rwy" path="res://Textures/Continue Text 2.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://b73q5xr15m07d" path="res://Textures/Quit Text 2.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://cnfxthv81px4a" path="res://Textures/Quit Text Focus.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://c2jmsc7s8tew" path="res://Textures/Continue Text Focus.png" id="6"]
+[ext_resource type="Script" path="res://Scripts/Pause Menu.gd" id="7"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+visible = false
+modulate = Color(1, 1, 1, 0.98)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="ContinueButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 175.0
+offset_right = 150.0
+offset_bottom = 225.0
+grow_horizontal = 2
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_mode = 1
+texture_normal = ExtResource("2")
+texture_hover = ExtResource("3")
+texture_focused = ExtResource("6")
+
+[node name="QuitButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 240.0
+offset_right = 80.0
+offset_bottom = 290.0
+grow_horizontal = 2
+focus_neighbor_top = NodePath("../ContinueButton")
+focus_neighbor_bottom = NodePath("../ContinueButton")
+focus_mode = 1
+texture_normal = ExtResource("1")
+texture_hover = ExtResource("4")
+texture_focused = ExtResource("5")
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

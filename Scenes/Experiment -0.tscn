@@ -1,0 +1,1616 @@
+[gd_scene load_steps=60 format=3 uid="uid://ce01udj75qbty"]
+
+[ext_resource type="AudioStream" uid="uid://bjunv87xkcdni" path="res://Audio/Experiment -0.wav" id="1"]
+[ext_resource type="Script" path="res://Scripts/Experiment -0.gd" id="2"]
+[ext_resource type="Script" path="res://Scripts/Camera2D/ScreenShake.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://bej1jcpabmfml" path="res://Scenes/Pause Menu.tscn" id="4"]
+[ext_resource type="Texture2D" uid="uid://bt0jy5iqo0j5t" path="res://Sprites/PlayerDefend.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://d1xvx8vtnyrr0" path="res://Textures/Health Bar 1.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://cctr1luj6cllq" path="res://Textures/Health Bar 2.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://c0qcna4wsa78s" path="res://Sprites/Experiment -0.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://h0cyl6fbm0le" path="res://Sprites/Click Box.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://bgifm35pll8p8" path="res://Sprites/Backspace Text.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://dc6oy4exays5e" path="res://Sprites/Click Box 2.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://d16mwuhlfhrnw" path="res://Sprites/Enter Text.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://3oeyc0k8xf3u" path="res://Sprites/Enemy Attack 1.png" id="13"]
+[ext_resource type="Texture2D" uid="uid://dirmiyccilkfd" path="res://Sprites/PlayerDodge.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://cesqlvcqhw1ln" path="res://Sprites/PlayerAttack.png" id="15"]
+[ext_resource type="Texture2D" uid="uid://2xxxrninbyq0" path="res://Sprites/Experiment -0 Hit.png" id="16"]
+[ext_resource type="Texture2D" uid="uid://wbyswk2rcj2j" path="res://Sprites/Experiment -0 Text.png" id="17"]
+[ext_resource type="Texture2D" uid="uid://c4h2mustkb4ne" path="res://Sprites/Enemy Attack 2.png" id="18"]
+[ext_resource type="Texture2D" uid="uid://crjuwdsnsneu0" path="res://Sprites/Game Over Text.png" id="19"]
+[ext_resource type="Texture2D" uid="uid://bnmf5dwaew0nf" path="res://Sprites/Arrow Clickbox.png" id="20"]
+[ext_resource type="Texture2D" uid="uid://1fxhmyuj3x6d" path="res://Sprites/Enemy Effects 1.png" id="21"]
+[ext_resource type="Texture2D" uid="uid://d1cbr73ftcs2k" path="res://Sprites/You Win Text.png" id="22"]
+[ext_resource type="Texture2D" uid="uid://bvcy084j2xn1m" path="res://Sprites/Player Attack 2.png" id="23"]
+[ext_resource type="Texture2D" uid="uid://ctb3c2rcg0o18" path="res://Sprites/Enemy Attack 3.png" id="24"]
+[ext_resource type="Texture2D" uid="uid://da1epb2ipyrgd" path="res://Sprites/Enemy Attack 4.png" id="25"]
+[ext_resource type="Texture2D" uid="uid://cm3pflppy720a" path="res://Sprites/Player Attack 3.png" id="26"]
+[ext_resource type="Texture2D" uid="uid://bl7smhkhrr5kg" path="res://Sprites/Enemy Attack 5.png" id="27"]
+[ext_resource type="Texture2D" uid="uid://criic6oyjbb0x" path="res://Textures/Pause Button.png" id="27_kqt5h"]
+[ext_resource type="Texture2D" uid="uid://deo74n52cbf7i" path="res://Textures/Pause Button 2.png" id="28_nd76c"]
+
+[sub_resource type="Animation" id="1"]
+resource_name = "FightAnimation"
+length = 79.2
+step = 0.05
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Experiment -0")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("1")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FightAnimation/Collision1Area:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.8, 5.4, 5.45, 8.4, 9, 9.05, 14.4, 15, 15.05, 18, 18.6, 18.65, 21.1, 21.3, 21.35, 23.5, 23.7, 23.75, 25.8, 26, 26.05, 28.2, 28.4, 28.45, 30.6, 30.8, 30.85, 33, 33.2, 33.25, 35.3, 35.5, 35.55, 37.7, 37.9, 37.95, 43.3, 43.9, 43.95, 46.9, 47.5, 47.55, 52.9, 53.5, 53.55, 56.5, 57.1, 57.15, 59.5, 59.7, 59.75, 61.9, 62.1, 62.15, 64.2, 64.4, 64.45, 66.6, 66.8, 66.85, 69, 69.2, 69.25, 71.4, 71.6, 71.65, 73.7, 73.9, 73.95, 76.1, 76.3, 76.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400), Vector2(240, 400), Vector2(400, 400), Vector2(240, 400)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FightAnimation/Clickbox:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.3, 2.4, 2.9, 11.9, 12, 12.5, 45.1, 45.2, 45.7, 54.7, 54.8, 55.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FightAnimation/Clickbox:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.4, 2.9, 12, 12.5, 45.2, 45.7, 54.8, 55.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FightAnimation/EnemyAttack1:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 4.7, 5.4, 8.3, 9, 14.3, 15, 17.9, 18.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(0.2, 0.2), Vector2(2, 2), Vector2(0.2, 0.2), Vector2(2, 2), Vector2(0.2, 0.2), Vector2(2, 2), Vector2(0.2, 0.2), Vector2(2, 2)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FightAnimation/EnemyAttack1:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 4.7, 4.8, 5.4, 8.3, 8.4, 9, 14.3, 14.4, 15, 17.9, 18, 18.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("FightAnimation/Clickbox/EnterText:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.3, 2.4, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("FightAnimation/Clickbox/EnterText:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2.4, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("FightAnimation/Clickbox2:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(6.6, 6.7, 7.2, 16.2, 16.3, 16.8, 40.8, 40.9, 41.4, 50.4, 50.5, 51),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("FightAnimation/Clickbox2:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 6.7, 7.2, 16.3, 16.8, 40.9, 41.4, 50.5, 51),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("FightAnimation/Clickbox2/BackspaceText:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(6.6, 6.7, 7.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("FightAnimation/Clickbox2/BackspaceText:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 6.7, 7.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("FightAnimation/EnemyAttack1:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 4.7, 5.4, 8.3, 9, 14.3, 15, 17.9, 18.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false]
+}
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath(".")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 21.1, 23.5, 25.8, 28.2, 30.6, 33, 35.3, 37.7, 59, 59.5, 61.3, 61.9, 63.7, 64.2, 66, 66.6, 68.5, 69, 70.8, 71.4, 73.2, 73.7, 75.5, 76.1, 78.2, 79.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"set_custom_mouse_cursor_1"
+}, {
+"args": [],
+"method": &"screenshake"
+}, {
+"args": [],
+"method": &"screenshake"
+}, {
+"args": [],
+"method": &"screenshake"
+}, {
+"args": [],
+"method": &"screenshake"
+}, {
+"args": [],
+"method": &"screenshake"
+}, {
+"args": [],
+"method": &"screenshake"
+}, {
+"args": [],
+"method": &"screenshake"
+}, {
+"args": [],
+"method": &"screenshake"
+}, {
+"args": [],
+"method": &"stopmoving"
+}, {
+"args": [],
+"method": &"screenshake"
+}, {
+"args": [],
+"method": &"startmoving"
+}, {
+"args": [],
+"method": &"screenshake"
+}, {
+"args": [],
+"method": &"stopmoving"
+}, {
+"args": [],
+"method": &"screenshake"
+}, {
+"args": [],
+"method": &"startmoving"
+}, {
+"args": [],
+"method": &"screenshake"
+}, {
+"args": [],
+"method": &"stopmoving"
+}, {
+"args": [],
+"method": &"screenshake"
+}, {
+"args": [],
+"method": &"startmoving"
+}, {
+"args": [],
+"method": &"screenshake"
+}, {
+"args": [],
+"method": &"stopmoving"
+}, {
+"args": [],
+"method": &"screenshake"
+}, {
+"args": [],
+"method": &"startmoving"
+}, {
+"args": [],
+"method": &"screenshake"
+}, {
+"args": [],
+"method": &"set_custom_mouse_cursor_2"
+}, {
+"args": [],
+"method": &"youwin"
+}]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("FightAnimation/Experiment-0/Experiment-0Text:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("FightAnimation/Experiment-0/EnemyEffect:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.7, 9.6, 9.7, 10.3, 19.2, 19.3, 19.9, 21.6, 21.7, 22.3, 23.9, 24, 24.6, 26.3, 26.4, 27, 28.7, 28.8, 29.4, 31.1, 31.2, 31.8, 33.4, 33.5, 34.1, 35.8, 35.9, 36.5, 38.4, 38.5, 39.1, 47.9, 48, 48.6, 57.6, 57.7, 58.3, 62.3, 62.4, 63, 67.1, 67.2, 67.8, 71.8, 71.9, 72.5, 76.8, 76.9, 77.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("FightAnimation/Experiment-0/EnemyEffect:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0.1, 0.7, 9.7, 10.3, 19.3, 19.9, 21.7, 22.25, 24, 24.65, 26.4, 27, 28.8, 29.4, 31.2, 31.8, 33.5, 34.1, 35.9, 36.5, 38.5, 39.1, 48, 48.6, 57.7, 58.3, 62.4, 63, 67.2, 67.8, 71.9, 72.5, 76.9, 77.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("FightAnimation/EnemyAttack2:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(21, 21.3, 23.4, 23.7, 25.7, 26, 28.1, 28.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(320, 240), Vector2(320, 700), Vector2(320, 240), Vector2(320, -200), Vector2(320, 240), Vector2(840, 240), Vector2(320, 240), Vector2(-280, 240)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("FightAnimation/EnemyAttack2:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(21, 21.1, 21.3, 23.4, 23.5, 23.7, 25.7, 25.8, 26, 28.1, 28.2, 28.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("FightAnimation/EnemyAttack2:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 21, 21.3, 23.4, 23.7, 25.7, 26, 28.1, 28.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("FightAnimation/ClickboxArrow:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 19.9, 22.3, 24.6, 27, 29.4, 31.8, 34.1, 36.5, 58.3, 60.7, 63, 65.4, 67.8, 70.2, 72.5, 74.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("FightAnimation/ClickboxArrow:modulate")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(19.8, 19.9, 20.3, 22.2, 22.3, 22.7, 24.5, 24.6, 25, 26.9, 27, 27.4, 29.3, 29.4, 29.8, 31.7, 31.8, 32.2, 34, 34.1, 34.5, 36.4, 36.5, 36.9, 58.2, 58.3, 58.7, 60.6, 60.7, 61.1, 62.9, 63, 63.4, 65.3, 65.4, 65.8, 67.7, 67.8, 68.2, 70.1, 70.2, 70.6, 72.4, 72.5, 72.9, 74.8, 74.9, 75.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("FightAnimation/ClickboxArrow:rotation_degrees")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(19.8, 22.1, 22.2, 24.4, 24.5, 26.8, 26.9, 29.2, 29.3, 31.6, 31.7, 33.9, 34, 36.3, 36.4, 58, 58.1, 58.2, 60.5, 60.6, 62.8, 62.9, 65.2, 65.3, 67.6, 67.7, 70, 70.1, 72.3, 72.4, 74.7, 74.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 180.0, 180.0, -90.0, -90.0, 90.0, 90.0, 180.0, 180.0, 0.0, 0.0, 90.0, 90.0, -90.0, -90.0, 180.0, -90.0, -90.0, 90.0, 90.0, 0.0, 0.0, 180.0, 180.0, 90.0, 90.0, -90.0, -90.0, 180.0, 180.0, 0.0]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("FightAnimation/ClickboxArrow:position")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(19.8, 22.1, 22.2, 24.4, 24.5, 26.8, 26.9, 29.2, 29.3, 31.6, 31.7, 33.9, 34, 36.3, 36.4, 58, 58.1, 58.2, 60.5, 60.6, 62.8, 62.9, 65.2, 65.3, 67.6, 67.7, 70, 70.1, 72.3, 72.4, 74.7, 74.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(320, 100), Vector2(320, 100), Vector2(320, 380), Vector2(320, 380), Vector2(180, 240), Vector2(180, 240), Vector2(460, 240), Vector2(460, 240), Vector2(320, 380), Vector2(320, 380), Vector2(320, 100), Vector2(320, 100), Vector2(460, 240), Vector2(460, 240), Vector2(180, 240), Vector2(180, 240), Vector2(320, 380), Vector2(180, 240), Vector2(180, 240), Vector2(460, 240), Vector2(460, 240), Vector2(320, 100), Vector2(320, 100), Vector2(320, 380), Vector2(320, 380), Vector2(460, 240), Vector2(460, 240), Vector2(180, 240), Vector2(180, 240), Vector2(320, 380), Vector2(320, 380), Vector2(320, 100)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("FightAnimation/Experiment-0/EnemyEffect:rotation_degrees")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0, 0.7, 9.6, 10.3, 19.2, 19.9, 21.6, 22.3, 23.9, 24.6, 26.3, 27, 28.7, 29.4, 31.1, 31.8, 33.4, 34.1, 35.8, 36.5, 38.4, 39.1, 47.9, 48.6, 57.6, 58.3, 62.3, 63, 67.1, 67.8, 71.8, 72.5, 76.8, 77.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 180.0, 0.0, -180.0, 0.0, 180.0, 0.0, -180.0, 0.0, 180.0, 0.0, -180.0, 0.0, 180.0, 0.0, -180.0, 0.0, 180.0, 0.0, -180.0, 0.0, 180.0, 0.0, -180.0, 0.0, 180.0, 0.0, -180.0, 0.0, 180.0, 0.0, 180.0, 0.0, -180.0]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("FightAnimation/Experiment-0/EnemyEffect:scale")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0, 0.7, 9.6, 10.3, 19.2, 19.9, 21.6, 22.3, 23.9, 24.6, 26.3, 27, 28.7, 29.4, 31.1, 31.8, 33.4, 34.1, 35.8, 36.5, 38.4, 39.1, 47.9, 48.6, 57.6, 58.3, 62.3, 63, 67.1, 67.8, 71.8, 72.5, 76.8, 77.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(0.5, 0.5)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("FightAnimation/EnemyAttack2:rotation_degrees")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(21, 23.3, 23.4, 25.6, 25.7, 28, 28.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [-90.0, -90.0, 90.0, 90.0, 180.0, 180.0, 0.0]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("FightAnimation/EnemyAttack2:scale")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(21, 21.3, 23.4, 23.7, 25.7, 26, 28.1, 28.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("FightAnimation/EnemyAttack3:position")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(30.5, 30.6, 31, 32.9, 33, 33.4, 35.2, 35.3, 35.7, 37.6, 37.7, 38.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(140, 730), Vector2(140, 0), Vector2(140, 0), Vector2(500, -40), Vector2(500, 480), Vector2(500, 480), Vector2(680, 390), Vector2(0, 390), Vector2(0, 390), Vector2(-40, 80), Vector2(640, 80), Vector2(640, 80)]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("FightAnimation/EnemyAttack3:modulate")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(30.5, 30.6, 31, 32.9, 33, 33.4, 35.2, 35.3, 35.7, 37.6, 37.7, 38.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("FightAnimation/EnemyAttack3:visible")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0, 30.5, 31, 32.9, 33.4, 35.2, 35.7, 37.6, 38.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("FightAnimation/EnemyAttack3:rotation_degrees")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(30.5, 32.8, 32.9, 35.1, 35.2, 37.5, 37.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [180.0, 180.0, 0.0, 0.0, 90.0, 90.0, -90.0]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("FightAnimation/EnemyAttack3:scale")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(30.5, 31, 32.9, 33.4, 35.2, 35.7, 37.6, 38.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("FightAnimation/Experiment-0:position")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0, 59.2, 59.4, 59.7, 60.5, 60.7, 60.9, 63.9, 64.1, 64.4, 65.2, 65.4, 65.6, 68.7, 68.9, 69.2, 70, 70.2, 70.4, 73.4, 73.6, 73.9, 74.7, 74.9, 75.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(320, 240), Vector2(320, 240), Vector2(320, 200), Vector2(320, 800), Vector2(320, 800), Vector2(320, -100), Vector2(320, 240), Vector2(320, 240), Vector2(320, 280), Vector2(320, -320), Vector2(320, -320), Vector2(320, 580), Vector2(320, 240), Vector2(320, 240), Vector2(360, 240), Vector2(-320, 240), Vector2(-320, 240), Vector2(720, 240), Vector2(320, 240), Vector2(320, 240), Vector2(280, 240), Vector2(940, 240), Vector2(940, 240), Vector2(-100, 240), Vector2(320, 240)]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("FightAnimation/Experiment-0:scale")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0, 59.4, 59.7, 60.5, 60.7, 60.9, 64.1, 64.4, 65.2, 65.4, 65.6, 68.9, 69.2, 70, 70.2, 70.4, 73.6, 73.9, 74.7, 74.9, 75.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(2, 2), Vector2(2, 2), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(1, 1), Vector2(2, 2), Vector2(2, 2), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(1, 1), Vector2(2, 2), Vector2(2, 2), Vector2(0.5, 0.5), Vector2(1, 1), Vector2(1, 1), Vector2(2, 2), Vector2(2, 2), Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("FightAnimation/Experiment-0:visible")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"times": PackedFloat32Array(0, 59.2, 59.8, 60.7, 63.9, 64.5, 65.4, 68.7, 69.3, 70.2, 73.4, 74, 74.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, true, true, false, true, true, false, true, true, false, true]
+}
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("FightAnimation/Experiment-0:rotation_degrees")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(0, 59.2, 63.7, 63.9, 65.8, 66, 68.5, 68.7, 70.6, 70.8, 73.2, 73.4, 75.3, 75.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 180.0, 180.0, 360.0, 360.0, 90.0, 90.0, 0.0, 0.0, 270.0, 270.0, 360.0]
+}
+tracks/37/type = "value"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("FightAnimation/EnemyAttack4:visible")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {
+"times": PackedFloat32Array(0, 61.8, 62.1, 66.5, 66.8, 71.3, 71.8, 76, 76.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false]
+}
+tracks/38/type = "value"
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/path = NodePath("FightAnimation/EnemyAttack4:modulate")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/keys = {
+"times": PackedFloat32Array(0, 61.8, 61.9, 62.1, 66.5, 66.6, 66.8, 71.3, 71.4, 71.8, 76, 76.1, 76.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/39/type = "value"
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/path = NodePath("FightAnimation/EnemyAttack4:rotation_degrees")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/keys = {
+"times": PackedFloat32Array(61.7, 66.4, 66.5, 71.2, 71.3, 71.8, 75.9, 76, 76.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [180.0, 180.0, 0.0, 0.0, 180.0, -180.0, -180.0, 0.0, 360.0]
+}
+tracks/40/type = "value"
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/path = NodePath("FightAnimation/EnemyAttack5:modulate")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/keys = {
+"times": PackedFloat32Array(43.2, 43.3, 43.9, 46.8, 46.9, 47.5, 52.8, 52.9, 53.5, 56.4, 56.5, 57.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/41/type = "value"
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/path = NodePath("FightAnimation/EnemyAttack5:visible")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/keys = {
+"times": PackedFloat32Array(0, 43.2, 43.9, 46.8, 47.5, 52.8, 53.5, 56.4, 57.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false]
+}
+tracks/42/type = "value"
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/path = NodePath("FightAnimation/EnemyAttack5:rotation_degrees")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/keys = {
+"times": PackedFloat32Array(0, 43.2, 43.9, 46.8, 47.5, 52.8, 53.5, 56.4, 57.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -180.0, 0.0, 180.0, 0.0, 180.0, 0.0, -180.0]
+}
+tracks/43/type = "value"
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/path = NodePath("FightAnimation/EnemyAttack5:scale")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/keys = {
+"times": PackedFloat32Array(0, 43.2, 43.9, 46.8, 47.5, 52.8, 53.5, 56.4, 57.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(2, 2), Vector2(1, 1), Vector2(2, 2), Vector2(1, 1), Vector2(2, 2), Vector2(1, 1), Vector2(2, 2)]
+}
+tracks/44/type = "value"
+tracks/44/imported = false
+tracks/44/enabled = true
+tracks/44/path = NodePath("FightAnimation/Experiment-0:modulate")
+tracks/44/interp = 1
+tracks/44/loop_wrap = true
+tracks/44/keys = {
+"times": PackedFloat32Array(0, 76.9, 77.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/45/type = "value"
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/path = NodePath("FightAnimation/YouWinScreen:visible")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/keys = {
+"times": PackedFloat32Array(0, 78.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/46/type = "value"
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/path = NodePath("FightAnimation/EnemyAttack1:rotation_degrees")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/keys = {
+"times": PackedFloat32Array(4.7, 5.4, 8.3, 9, 14.3, 15, 17.9, 18.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -180.0, 0.0, 180.0, 0.0, 180.0, 0.0, -180.0]
+}
+tracks/47/type = "value"
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/path = NodePath("FightAnimation/EnemyAttack1:flip_h")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/keys = {
+"times": PackedFloat32Array(0, 4.7, 5.4, 17.9, 18.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/48/type = "value"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath("FightAnimation/EnemyAttack5:flip_h")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"times": PackedFloat32Array(0, 46.8, 47.5, 52.8, 53.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ig5ql"]
+_data = {
+"FightAnimation": SubResource("1")
+}
+
+[sub_resource type="Animation" id="6"]
+resource_name = "Experiment-0Move"
+length = 2.0
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(320, 240), Vector2(320, 230), Vector2(320, 240), Vector2(320, 250), Vector2(320, 240)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_14opb"]
+_data = {
+"Experiment-0Move": SubResource("6")
+}
+
+[sub_resource type="Animation" id="18"]
+resource_name = "Experiment-0Hit"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nruhw"]
+_data = {
+"Experiment-0Hit": SubResource("18")
+}
+
+[sub_resource type="CircleShape2D" id="4"]
+
+[sub_resource type="CircleShape2D" id="5"]
+radius = 20.0
+
+[sub_resource type="Animation" id="7"]
+resource_name = "ClickboxPressed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nx44y"]
+_data = {
+"ClickboxPressed": SubResource("7")
+}
+
+[sub_resource type="Animation" id="8"]
+resource_name = "Clickbox2Pressed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4s5qh"]
+_data = {
+"Clickbox2Pressed": SubResource("8")
+}
+
+[sub_resource type="Animation" id="19"]
+resource_name = "ClickBoxArrowPressed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xtgf7"]
+_data = {
+"ClickBoxArrowPressed": SubResource("19")
+}
+
+[sub_resource type="Animation" id="2"]
+resource_name = "PlayerDefend"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerDefendAnimation/PlayerDefend:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 0.6, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fl5sp"]
+_data = {
+"PlayerDefend": SubResource("2")
+}
+
+[sub_resource type="Animation" id="9"]
+resource_name = "PlayerDodgeDown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerDodgeAnimation/PlayerDodge:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerDodgeAnimation/PlayerDodge:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(320, 400), Vector2(320, 400), Vector2(320, 500)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerDodgeAnimation/PlayerDodge:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [90.0]
+}
+
+[sub_resource type="Animation" id="10"]
+resource_name = "PlayerDodgeLeft"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerDodgeAnimation/PlayerDodge:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerDodgeAnimation/PlayerDodge:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(320, 380), Vector2(320, 380), Vector2(140, 380)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerDodgeAnimation/PlayerDodge:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-180.0]
+}
+
+[sub_resource type="Animation" id="11"]
+resource_name = "PlayerDodgeRight"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerDodgeAnimation/PlayerDodge:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerDodgeAnimation/PlayerDodge:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(320, 380), Vector2(320, 380), Vector2(500, 380)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerDodgeAnimation/PlayerDodge:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [180.0]
+}
+
+[sub_resource type="Animation" id="12"]
+resource_name = "PlayerDodgeUp"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerDodgeAnimation/PlayerDodge:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerDodgeAnimation/PlayerDodge:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(320, 500), Vector2(320, 500), Vector2(320, 400)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerDodgeAnimation/PlayerDodge:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-90.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2pbah"]
+_data = {
+"PlayerDodgeDown": SubResource("9"),
+"PlayerDodgeLeft": SubResource("10"),
+"PlayerDodgeRight": SubResource("11"),
+"PlayerDodgeUp": SubResource("12")
+}
+
+[sub_resource type="Animation" id="13"]
+resource_name = "PlayerAttack"
+length = 2.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAttackAnimation/PlayerAttack:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.55, 1.7, 1.75, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAttackAnimation/PlayerAttack:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-160, 240), Vector2(800, 240)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Experiment-0/Experiment-0Hit:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.75, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.75),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"screenshake_2"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerAttackAnimation/PlayerAttack:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [180.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerAttackAnimation/PlayerAttack:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.5, 1.6, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="21"]
+resource_name = "PlayerAttackOtherDirection"
+length = 2.0
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAttackAnimation/PlayerAttack:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.55, 1.7, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAttackAnimation/PlayerAttack:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 1.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(320, -180), Vector2(320, 680)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Experiment-0/Experiment-0Hit:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.75, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.75),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"screenshake_2"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerAttackAnimation/PlayerAttack:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [90.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerAttackAnimation/PlayerAttack:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.5, 1.6, 1.75),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qk0h1"]
+_data = {
+"PlayerAttack": SubResource("13"),
+"PlayerAttackOtherDirection": SubResource("21")
+}
+
+[sub_resource type="Animation" id="20"]
+resource_name = "PlayerAttack2"
+length = 1.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Experiment-0/Experiment-0Hit:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.25, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAttack2Animation/PlayerAttack2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.05, 1.2, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerAttack2Animation/PlayerAttack2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 1.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(320, 540), Vector2(320, 300)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerAttack2Animation/PlayerAttack2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 1.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"screenshake_2"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nebgk"]
+_data = {
+"PlayerAttack2": SubResource("20")
+}
+
+[sub_resource type="Animation" id="22"]
+resource_name = "PlayerAttack3"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAttack3Animation/PlayerAttack3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.1, 1.15, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"screenshake_2"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Experiment-0/Experiment-0Hit:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.25, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pj6tt"]
+_data = {
+"PlayerAttack3": SubResource("22")
+}
+
+[sub_resource type="Animation" id="3"]
+resource_name = "PlayerDeath"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../CanvasLayer/PlayerDeathAnimation/GameOverScreen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7gwwo"]
+_data = {
+"PlayerDeath": SubResource("3")
+}
+
+[node name="Experiment -0" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("2")
+
+[node name="Experiment -0" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1")
+autoplay = true
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 660.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FightAnimation" type="AnimationPlayer" parent="."]
+process_mode = 1
+autoplay = "FightAnimation"
+libraries = {
+"": SubResource("AnimationLibrary_ig5ql")
+}
+
+[node name="EnemyAttack1" type="Sprite2D" parent="FightAnimation"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(320, 240)
+scale = Vector2(2, 2)
+texture = ExtResource("13")
+
+[node name="EnemyAttack3" type="Sprite2D" parent="FightAnimation"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(140, 730)
+rotation = 3.14159
+texture = ExtResource("24")
+offset = Vector2(0, -210)
+
+[node name="EnemyAttack5" type="Sprite2D" parent="FightAnimation"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(320, 240)
+texture = ExtResource("27")
+
+[node name="Experiment-0" type="Sprite2D" parent="FightAnimation"]
+position = Vector2(320, 240)
+texture = ExtResource("8")
+
+[node name="Experiment-0Text" type="Sprite2D" parent="FightAnimation/Experiment-0"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, -175)
+texture = ExtResource("17")
+
+[node name="Experiment-0MoveAnimation" type="AnimationPlayer" parent="FightAnimation/Experiment-0"]
+autoplay = "Experiment-0Move"
+libraries = {
+"": SubResource("AnimationLibrary_14opb")
+}
+
+[node name="Experiment-0HitAnimation" type="AnimationPlayer" parent="FightAnimation/Experiment-0"]
+libraries = {
+"": SubResource("AnimationLibrary_nruhw")
+}
+
+[node name="Experiment-0Hit" type="Sprite2D" parent="FightAnimation/Experiment-0"]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("16")
+
+[node name="EnemyEffect" type="Sprite2D" parent="FightAnimation/Experiment-0"]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("21")
+
+[node name="EnemyAttack2" type="Sprite2D" parent="FightAnimation"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(320, 240)
+rotation = -1.5708
+texture = ExtResource("18")
+
+[node name="EnemyAttack4" type="Sprite2D" parent="FightAnimation"]
+visible = false
+position = Vector2(320, 240)
+rotation = 3.14159
+texture = ExtResource("25")
+offset = Vector2(0, -330)
+flip_v = true
+
+[node name="Collision1Area" type="Area2D" parent="FightAnimation"]
+position = Vector2(240, 400)
+
+[node name="Collision1" type="CollisionShape2D" parent="FightAnimation/Collision1Area"]
+shape = SubResource("4")
+
+[node name="Collision2Area" type="Area2D" parent="FightAnimation"]
+position = Vector2(400, 400)
+
+[node name="Collision2" type="CollisionShape2D" parent="FightAnimation/Collision2Area"]
+shape = SubResource("5")
+
+[node name="Clickbox" type="TextureButton" parent="FightAnimation"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.792
+anchor_right = 0.5
+anchor_bottom = 0.792
+offset_left = -50.0
+offset_top = -50.16
+offset_right = 50.0
+offset_bottom = 49.84
+pivot_offset = Vector2(50, 50)
+texture_normal = ExtResource("9")
+
+[node name="ClickboxPressedAnimation" type="AnimationPlayer" parent="FightAnimation/Clickbox"]
+libraries = {
+"": SubResource("AnimationLibrary_nx44y")
+}
+
+[node name="EnterText" type="Sprite2D" parent="FightAnimation/Clickbox"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(50, 50)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12")
+
+[node name="Clickbox2" type="TextureButton" parent="FightAnimation"]
+process_mode = 1
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.792
+anchor_right = 0.5
+anchor_bottom = 0.792
+offset_left = -50.0
+offset_top = -50.16
+offset_right = 50.0
+offset_bottom = 49.84
+pivot_offset = Vector2(50, 50)
+texture_normal = ExtResource("11")
+
+[node name="Clickbox2PressedAnimation" type="AnimationPlayer" parent="FightAnimation/Clickbox2"]
+libraries = {
+"": SubResource("AnimationLibrary_4s5qh")
+}
+
+[node name="BackspaceText" type="Sprite2D" parent="FightAnimation/Clickbox2"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(50, 50)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10")
+
+[node name="ClickboxArrow" type="Sprite2D" parent="FightAnimation"]
+process_mode = 1
+visible = false
+modulate = Color(1, 1, 1, 0)
+position = Vector2(320, 100)
+texture = ExtResource("20")
+
+[node name="ClickboxArrowPressedAnimation" type="AnimationPlayer" parent="FightAnimation/ClickboxArrow"]
+libraries = {
+"": SubResource("AnimationLibrary_xtgf7")
+}
+
+[node name="PlayerDefendAnimation" type="AnimationPlayer" parent="FightAnimation"]
+process_mode = 1
+libraries = {
+"": SubResource("AnimationLibrary_fl5sp")
+}
+
+[node name="PlayerDefend" type="Sprite2D" parent="FightAnimation/PlayerDefendAnimation"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(320, 240)
+texture = ExtResource("5")
+
+[node name="PlayerDodgeAnimation" type="AnimationPlayer" parent="FightAnimation"]
+process_mode = 1
+libraries = {
+"": SubResource("AnimationLibrary_2pbah")
+}
+
+[node name="PlayerDodge" type="Sprite2D" parent="FightAnimation/PlayerDodgeAnimation"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(320, 400)
+rotation = 1.5708
+texture = ExtResource("14")
+
+[node name="PlayerAttackAnimation" type="AnimationPlayer" parent="FightAnimation"]
+process_mode = 1
+libraries = {
+"": SubResource("AnimationLibrary_qk0h1")
+}
+
+[node name="PlayerAttack" type="Sprite2D" parent="FightAnimation/PlayerAttackAnimation"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-160, 240)
+rotation = 3.14159
+texture = ExtResource("15")
+
+[node name="PlayerAttack2Animation" type="AnimationPlayer" parent="FightAnimation"]
+process_mode = 1
+libraries = {
+"": SubResource("AnimationLibrary_nebgk")
+}
+
+[node name="PlayerAttack2" type="Sprite2D" parent="FightAnimation/PlayerAttack2Animation"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(320, 540)
+rotation = 1.5708
+texture = ExtResource("23")
+
+[node name="PlayerAttack3Animation" type="AnimationPlayer" parent="FightAnimation"]
+process_mode = 1
+libraries = {
+"": SubResource("AnimationLibrary_pj6tt")
+}
+
+[node name="PlayerAttack3" type="Sprite2D" parent="FightAnimation/PlayerAttack3Animation"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(320, 390)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("26")
+
+[node name="HealthBar" type="TextureProgressBar" parent="FightAnimation"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -50.0
+offset_right = 375.0
+offset_bottom = 50.0
+scale = Vector2(0.5, 0.5)
+value = 100.0
+texture_under = ExtResource("7")
+texture_progress = ExtResource("6")
+
+[node name="YouWinScreen" type="ColorRect" parent="FightAnimation"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="YouWinText" type="Sprite2D" parent="FightAnimation/YouWinScreen"]
+position = Vector2(320, 240)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("22")
+
+[node name="ScreenShake" type="Camera2D" parent="."]
+scale = Vector2(0.5, 0.5)
+offset = Vector2(320, 240)
+script = ExtResource("3")
+
+[node name="Timer" type="Timer" parent="ScreenShake"]
+one_shot = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4")]
+
+[node name="PauseButton" type="TextureButton" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.392157)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -309.0
+offset_top = -471.0
+offset_right = -259.0
+offset_bottom = -421.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("27_kqt5h")
+texture_hover = ExtResource("28_nd76c")
+
+[node name="PlayerDeathAnimation" type="AnimationPlayer" parent="CanvasLayer"]
+root_node = NodePath("../../FightAnimation")
+libraries = {
+"": SubResource("AnimationLibrary_7gwwo")
+}
+
+[node name="GameOverScreen" type="ColorRect" parent="CanvasLayer/PlayerDeathAnimation"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="GameOverText" type="Sprite2D" parent="CanvasLayer/PlayerDeathAnimation/GameOverScreen"]
+position = Vector2(320, 240)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("19")
+
+[connection signal="animation_finished" from="FightAnimation" to="." method="_on_FightAnimation_animation_finished"]
+[connection signal="area_entered" from="FightAnimation/Collision1Area" to="." method="_on_Collision1Area_area_entered"]
+[connection signal="pressed" from="FightAnimation/Clickbox" to="." method="_on_Clickbox_pressed"]
+[connection signal="pressed" from="FightAnimation/Clickbox2" to="." method="_on_Clickbox2_pressed"]
+[connection signal="timeout" from="ScreenShake/Timer" to="ScreenShake" method="_on_Timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/PauseButton" to="CanvasLayer/PauseMenu" method="_on_pause_button_pressed"]
+[connection signal="animation_finished" from="CanvasLayer/PlayerDeathAnimation" to="." method="_on_PlayerDeathAnimation_animation_finished"]

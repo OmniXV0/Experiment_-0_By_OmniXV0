@@ -1,0 +1,138 @@
+[gd_scene load_steps=14 format=3 uid="uid://mcx37l5mtyb7"]
+
+[ext_resource type="Texture2D" uid="uid://bhqgqfg311enc" path="res://Textures/Logo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cootbqyri2yka" path="res://Textures/Title.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dj7s2ac7n1nrd" path="res://Textures/Play Text.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://chq7n718hw3xr" path="res://Textures/Play Text 2.png" id="4"]
+[ext_resource type="Script" path="res://Scripts/Main Menu.gd" id="5"]
+[ext_resource type="Texture2D" uid="uid://ce2dec2jexgav" path="res://Textures/By Text.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://d270gn4bfqvyd" path="res://Sprites/OmniXV0.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://dmmgh2w7imcbp" path="res://Textures/Powered By Godot Text.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://cju2fudm8r4ck" path="res://Textures/Version Text.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://cr3xjd0qnmaod" path="res://Textures/Copyright OmniXV0 Text.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://beihwu4jsenog" path="res://Sprites/0VOlihiN.png" id="11"]
+[ext_resource type="Texture2D" uid="uid://dakssxqhm2lxv" path="res://Sprites/You Win Text 2.png" id="12"]
+[ext_resource type="Script" path="res://Scripts/Resources/game_save.gd" id="13"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5")
+game_save_class = ExtResource("13")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -142.5
+offset_right = 250.0
+offset_bottom = -42.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2")
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 85.0
+offset_top = -142.5
+offset_right = 185.0
+offset_bottom = -42.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1")
+
+[node name="PlayButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -210.0
+offset_right = 100.0
+offset_bottom = -110.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("3")
+texture_hover = ExtResource("4")
+
+[node name="ByText" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 175.0
+offset_right = 370.0
+offset_bottom = 275.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6")
+
+[node name="OmniXV0" type="Sprite2D" parent="."]
+position = Vector2(340, 200)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7")
+
+[node name="VOlihiN" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(345, 200)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("11")
+
+[node name="PoweredByGodot" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 100.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8")
+
+[node name="CopyrightOmniXV0Text" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 490.0
+offset_right = 990.0
+offset_bottom = 100.0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10")
+
+[node name="VersionText" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -35.0
+offset_right = 340.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9")
+
+[node name="YouWinText2" type="Sprite2D" parent="."]
+position = Vector2(320, -100)
+texture = ExtResource("12")
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
